@@ -20,7 +20,7 @@ class CreatePurchaseOrderLinesTable extends Migration
 	        $table->text('item_namespace');
 	        $table->integer('quantity');
 	        $table->integer('comment')->nullable();
-	        $table->integer('status')->default('created');
+	        $table->integer('status');
             $table->timestamps();
         });
     }

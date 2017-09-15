@@ -18,7 +18,7 @@ class CreatePurchaseOrdersTable extends Migration
 	        $table->integer('customer_warehouse_id');
 	        $table->integer('vendor_warehouse_id');
 	        $table->text('comment')->nullable();
-	        $table->text('status')->default('created');
+	        $table->text('status');
             $table->timestamps();
         });
     }

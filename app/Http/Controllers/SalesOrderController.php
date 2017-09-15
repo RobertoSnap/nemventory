@@ -71,6 +71,7 @@ class SalesOrderController extends Controller
 	    $so->customer_warehouse_id = $customer_warehouse->id;
 	    $so->vendor_warehouse_id   = $vendor_warehouse->id;
 	    $so->comment               = request( 'comment' );
+	    $so->status                 = 'created';
 
 	    $so->save();
 
@@ -82,6 +83,7 @@ class SalesOrderController extends Controller
 			    'item_name'         => $line['item']['mosaic']['id']['name'],
 			    'item_namespace'    => $line['item']['mosaic']['id']['namespaceId'],
 			    'quantity'          => $line['quantity'],
+			    'status'            => 'created'
 		    ] ) );
 	    }
 

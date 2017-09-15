@@ -67,6 +67,7 @@ class ItemRequestController extends Controller
 		    'name'            => request( 'name' ),
 		    'description'     => request( 'description' ),
 		    'warehouse_id'    => $warehouse->id,
+		    'status'          => 'requested',
 		    'initial_stock'   => request( 'initialStock' ),
 		    'divisbility'     => request( 'divisbility' ),
 		    'requester'       => request( 'warehouse' ),

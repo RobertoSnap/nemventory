@@ -68,6 +68,7 @@ class PurchaseOrderController extends Controller {
 		$po->customer_warehouse_id = $customer_warehouse->id;
 		$po->vendor_warehouse_id   = $vendor_warehouse->id;
 		$po->comment               = request( 'comment' );
+		$po->status               = 'created';
 
 		$po->save();
 
@@ -79,6 +80,7 @@ class PurchaseOrderController extends Controller {
 				'item_name'         => $line['item']['mosaic']['id']['name'],
 				'item_namespace'    => $line['item']['mosaic']['id']['namespaceId'],
 				'quantity'          => $line['quantity'],
+				'status'            => 'created'
 			] ) );
 		}
 

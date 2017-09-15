@@ -19,7 +19,7 @@ class CreateTransactionsTable extends Migration
 	        $table->integer('hash');
 	        $table->integer('type');
 	        $table->json('transaction');
-	        $table->text('status')->default('registered');
+	        $table->text('status');
 	        $table->text('comment')->default('');
             $table->timestamps();
         });

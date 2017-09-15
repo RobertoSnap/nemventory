@@ -18,7 +18,7 @@ class CreateItemRequestsTable extends Migration
 	        $table->integer('warehouse_id');
 	        $table->string('name');
 	        $table->text('description');
-	        $table->text('status')->default('requested');
+	        $table->text('status');
 	        $table->integer('divisbility');
 	        $table->integer('initial_stock');
 	        $table->integer('fee_total');
