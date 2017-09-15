@@ -20,7 +20,7 @@ class CreateSalesOrderLinesTable extends Migration
 	        $table->text('item_namespace');
 	        $table->integer('quantity');
 	        $table->integer('comment')->nullable();
-	        $table->integer('status');
+	        $table->text('status');
 	        $table->timestamps();
         });
     }
