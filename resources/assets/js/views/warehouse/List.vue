@@ -5,7 +5,7 @@
             <template slot="address" scope="row"><b-badge variant="primary">{{ prettyAddress(row.value) }}</b-badge></template>
             <template slot="actions" scope="row">
                 <!-- We use click.stop here to prevent a 'row-clicked' event from also happening -->
-                <router-link :to="'/warehouse/'+ plainAddress ( row.item.address ) " class="btn btn-primary" >Details</router-link>
+                <router-link :to="'/warehouse/'+ plainAddress ( row.item.address ) " class="btn btn-primary" >See inventory</router-link>
             </template>
 
         </b-table>
