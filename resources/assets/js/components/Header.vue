@@ -3,7 +3,7 @@
         <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button" @click="mobileSidebarToggle">
             &#9776;
         </button>
-        <a class="navbar-brand" href="http://nemventory2.app"><b>NEM</b>ventory</a>
+        <a class="navbar-brand" href="http://nemventory.nem.today"><b>NEM</b>ventory</a>
         <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" @click="sidebarMinimize">&#9776;
         </button>
 
