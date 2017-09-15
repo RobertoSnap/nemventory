@@ -10,7 +10,7 @@
         <b-nav is-nav-bar class="ml-auto">
             <b-nav-item-dropdown :text="userName" right>
 
-                <a class="dropdown-item" href="http://nemventory2.app">Exit</a>
+                <a class="dropdown-item" href="http://nemventory.nem.today">Exit</a>
             </b-nav-item-dropdown>
         </b-nav>
     </header>
