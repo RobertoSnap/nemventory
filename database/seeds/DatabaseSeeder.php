@@ -84,12 +84,14 @@ class DatabaseSeeder extends Seeder
 		    'customer_warehouse_id' => 1,
 		    'vendor_warehouse_id' => 2,
 		    'comment' => 'Testign PO',
+		    'status' => 'created'
 	    ]);
 	    DB::table('sales_orders')->insert([
 		    'id' => '1',
 		    'customer_warehouse_id' => 1,
 		    'vendor_warehouse_id' => 2,
 		    'comment' => 'Testign PO',
+		    'status' => 'created'
 	    ]);
 
 	    \App\Models\User::find(1)->warehouses()->attach([1,2,3],['relation' => "owner"]);
