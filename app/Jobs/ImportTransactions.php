@@ -44,6 +44,7 @@ class ImportTransactions implements ShouldQueue
 					'height'      => $nem_transaction->meta->height,
 					'type'        => $nem_transaction->transaction->type,
 					'transaction' => json_encode( $nem_transaction->transaction ),
+					'transaction' => json_encode( $nem_transaction->transaction ),
 					'status' => 'registered'
 				] );
 		}

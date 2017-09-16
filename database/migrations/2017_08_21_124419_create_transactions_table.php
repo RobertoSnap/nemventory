@@ -20,7 +20,7 @@ class CreateTransactionsTable extends Migration
 	        $table->integer('type');
 	        $table->json('transaction');
 	        $table->text('status');
-	        $table->text('comment');
+	        $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
