@@ -20,6 +20,7 @@
 
 
         </b-table>
+        <h3 v-if="! items">No purchase orders, start by creating one?</h3>
     </div>
 </template>
 

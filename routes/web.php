@@ -22,6 +22,8 @@ Route::get('/web', 'HomeController@index');
 
 Route::get('/test', function ( ) {
 
-
+	dispatch(new \App\Jobs\ImportTransactions());
+	dispatch(new \App\Jobs\JobDispatcher());
+	dispatch(new \App\Jobs\FetchNemItems());
 
 });
