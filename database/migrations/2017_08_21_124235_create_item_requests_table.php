@@ -24,7 +24,7 @@ class CreateItemRequestsTable extends Migration
 	        $table->integer('fee_total');
 	        $table->integer('fee_transfer');
 	        $table->integer('fee_transaction');
-	        $table->integer('requester');
+	        $table->text('requester');
             $table->timestamps();
         });
     }
