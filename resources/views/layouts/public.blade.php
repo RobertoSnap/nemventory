@@ -29,8 +29,8 @@
                     <h3 class="masthead-brand"><a href="/"><b>NEM</b>ventory</a></h3>
                     <nav class="nav nav-masthead">
                         @if (Auth::guest())
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            <b-nav-item class="nav-link" href="{{ route('login') }}">Login</b-nav-item>
+                            <b-nav-item class="nav-link" href="{{ route('register') }}">Register</b-nav-item>
                         @else
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
