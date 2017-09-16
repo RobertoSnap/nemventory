@@ -6,7 +6,7 @@
         <br><br><br>
 
         <h4>Decentralized quantities</h4>
-        <h4>Shared item register</h4>
+        <h4>Centralized item register</h4>
         <h4>Unified trade</h4>
 
 
