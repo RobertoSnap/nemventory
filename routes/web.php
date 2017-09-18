@@ -26,4 +26,11 @@ Route::get('/test', function ( ) {
 	dispatch(new \App\Jobs\JobDispatcher());
 	dispatch(new \App\Jobs\FetchNemItems());
 
+
+
+});
+Route::get('/test2', function ( ) {
+
+	dd( NemSDK::models()->account()->generate());
+
 });

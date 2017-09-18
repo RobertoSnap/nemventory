@@ -54,7 +54,7 @@ class FetchNemItems implements ShouldQueue
 					'name'           => $item->mosaic->id->name,
 					'namespace_id'   => $item->mosaic->id->namespaceId,
 					'description'    => $item->mosaic->description,
-					'divisbility'    => $divisibility,
+					'divisibility'    => $divisibility,
 					'initial_supply' => $initial_supply,
 
 				] );

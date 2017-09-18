@@ -35022,7 +35022,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('a', {
     staticClass: "navbar-brand",
     attrs: {
-      "href": "http://nemventory2.app"
+      "href": "http://nemventory.nem.today"
     }
   }, [_c('b', [_vm._v("NEM")]), _vm._v("ventory")])
 }]}
@@ -43181,13 +43181,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: '',
                 description: '',
                 initialStock: '',
-                divisbility: 0,
+                divisibility: 0,
                 warehouse: '',
                 fee: ''
             }),
             wallets: [],
             itemRequests: [],
-            divisbilitys: [{
+            divisibilitys: [{
                 value: 0,
                 name: "1"
             }, {
@@ -43240,7 +43240,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //                this.form.name = "test" + Math.floor((Math.random() * 10000) + 1);
             //                this.form.description = "Testing now";
             //                this.form.initialStock = 500;
-            //                this.form.divisbility = 0;
+            //                this.form.divisibility = 0;
 
 
             //Get fee
@@ -43362,20 +43362,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }) : _vm._e()], 1), _vm._v(" "), _c('b-form-group', [_c('label', [_vm._v("Divisibility")]), _vm._v(" "), _c('b-form-select', {
     staticClass: "mb-3",
     attrs: {
-      "options": _vm.divisbilitys,
+      "options": _vm.divisibilitys,
       "text-field": "name"
     },
     model: {
-      value: (_vm.form.divisbility),
+      value: (_vm.form.divisibility),
       callback: function($$v) {
-        _vm.form.divisbility = $$v
+        _vm.form.divisibility = $$v
       },
-      expression: "form.divisbility"
+      expression: "form.divisibility"
     }
-  }), _vm._v(" "), (_vm.form.errors.has('divisbility')) ? _c('span', {
+  }), _vm._v(" "), (_vm.form.errors.has('divisibility')) ? _c('span', {
     staticClass: "help text-red",
     domProps: {
-      "textContent": _vm._s(_vm.form.errors.get('divisbility'))
+      "textContent": _vm._s(_vm.form.errors.get('divisibility'))
     }
   }) : _vm._e()], 1), _vm._v(" "), _c('b-form-group', {
     attrs: {
@@ -43783,6 +43783,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -43894,7 +43895,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }, [_vm._v("Receive")]) : _vm._e()]
       }
     }])
-  }) : _vm._e()], 1)
+  }) : _vm._e(), _vm._v(" "), (!_vm.items) ? _c('h3', [_vm._v("No purchase orders, start by creating one?")]) : _vm._e()], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

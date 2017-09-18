@@ -35,10 +35,10 @@
 
         <b-form-group>
             <label>Divisibility</label>
-            <b-form-select v-model="form.divisbility" :options="divisbilitys" class="mb-3" text-field="name">
+            <b-form-select v-model="form.divisibility" :options="divisibilitys" class="mb-3" text-field="name">
             </b-form-select>
-            <span class="help text-red" v-if="form.errors.has('divisbility')"
-                  v-text="form.errors.get('divisbility')"></span>
+            <span class="help text-red" v-if="form.errors.has('divisibility')"
+                  v-text="form.errors.get('divisibility')"></span>
         </b-form-group>
 
         <!-- Warehouse -->
@@ -75,13 +75,13 @@
                     name: '',
                     description: '',
                     initialStock: '',
-                    divisbility: 0,
+                    divisibility: 0,
                     warehouse: '',
                     fee: ''
                 }),
                 wallets: [],
                 itemRequests: [],
-                divisbilitys: [
+                divisibilitys: [
                     {
                         value: 0,
                         name: "1"
@@ -139,7 +139,7 @@
     //                this.form.name = "test" + Math.floor((Math.random() * 10000) + 1);
     //                this.form.description = "Testing now";
     //                this.form.initialStock = 500;
-    //                this.form.divisbility = 0;
+    //                this.form.divisibility = 0;
 
 
                 //Get fee

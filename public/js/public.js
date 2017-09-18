@@ -4016,7 +4016,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('h1', [_vm._v("Blockchain powered trade and warehouse system")]), _vm._v(" "), _c('br'), _c('br'), _c('br'), _vm._v(" "), _c('h4', [_vm._v("Decentralized quantities")]), _vm._v(" "), _c('h4', [_vm._v("Shared item register")]), _vm._v(" "), _c('h4', [_vm._v("Unified trade")])])
+  return _c('div', [_c('h1', [_vm._v("Blockchain powered trade and warehouse system")]), _vm._v(" "), _c('br'), _c('br'), _c('br'), _vm._v(" "), _c('h4', [_vm._v("Decentralized quantities")]), _vm._v(" "), _c('h4', [_vm._v("Centralized item register")]), _vm._v(" "), _c('h4', [_vm._v("Unified trade")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

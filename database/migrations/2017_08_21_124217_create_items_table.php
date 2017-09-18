@@ -20,7 +20,7 @@ class CreateItemsTable extends Migration
 	        $table->text('namespace_id');
 	        $table->string('name');
 	        $table->text('description');
-	        $table->integer('divisbility');
+	        $table->integer('divisibility');
 	        $table->integer('initial_supply');
             $table->timestamps();
         });

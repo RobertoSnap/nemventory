@@ -39,7 +39,7 @@ class Transaction {
 //					config('nem.itemNamespace'),
 //					env('OWNER_ACCOUNT_PUBLIC_KEY'),
 //					[
-//						'divisbility' => $this->item_request->divisbility,
+//						'divisibility' => $this->item_request->divisibility,
 //						'initialSupply' => $this->item_request->initial_stock,
 //						'supplyMutable' => true,
 //						'transferable' => true,

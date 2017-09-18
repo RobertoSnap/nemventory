@@ -40,6 +40,9 @@ class Inventory {
 			$namespace = config( 'nem.itemNamespace' );
 		}
 		$items = NemSDK::mosaic()->getMosaicDefinitions( $namespace, 1000 );
+		if(empty($items)){
+				return false;
+		}
 		foreach ( $items as $item ) {
 			if ( $itemName == $item->mosaic->id->name ) {
 				return $item;

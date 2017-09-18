@@ -44,7 +44,7 @@ class ItemRequestController extends Controller
 		    ),
 		    'description'  => 'required',
 		    'initialStock' => 'required|max:9000000000|min:0',
-		    'divisbility'  => 'required|max:6|min:0',
+		    'divisibility'  => 'required|max:6|min:0',
 		    'warehouse'    => array(
 			    'required',
 			    'regex:/[a-zA-Z0-9]+/',
@@ -69,7 +69,7 @@ class ItemRequestController extends Controller
 		    'warehouse_id'    => $warehouse->id,
 		    'status'          => 'requested',
 		    'initial_stock'   => request( 'initialStock' ),
-		    'divisbility'     => request( 'divisbility' ),
+		    'divisibility'     => request( 'divisibility' ),
 		    'requester'       => request( 'warehouse' ),
 		    'fee_total'       => $fee,
 		    'fee_transfer'    => $first_transaction_fee,

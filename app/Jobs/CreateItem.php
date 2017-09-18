@@ -48,6 +48,17 @@ class CreateItem implements ShouldQueue
 
 		    return;
 	    }
+	    if($this->item_request->status !== "requested"){
+		    //No item request for this NEM transactions
+		    DB::table('transactions')
+		      ->where('id', $this->transaction->id)
+		      ->update([
+			      'status' => 'processed',
+			      'comment' => 'Item request for this transaction is allready processed'
+		      ]);
+
+		    return;
+	    }
 	    //Check that the fee is enough matches
 	    switch ( true ) {
 	        case $this->transaction->transaction->amount >= $this->item_request->fee_transaction  :
@@ -61,8 +72,9 @@ class CreateItem implements ShouldQueue
 			        $this->item_request->description,
 			        config('nem.itemNamespace'),
 			        env('MAIN_ACCOUNT_PUBLIC_KEY'),
+			        null,
 			        [
-				        'divisbility' => $this->item_request->divisbility,
+				        'divisibility' => $this->item_request->divisibility,
 				        'initialSupply' => $this->item_request->initial_stock,
 				        'supplyMutable' => true,
 				        'transferable' => true,

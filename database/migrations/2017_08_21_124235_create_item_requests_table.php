@@ -19,7 +19,7 @@ class CreateItemRequestsTable extends Migration
 	        $table->string('name');
 	        $table->text('description');
 	        $table->text('status');
-	        $table->integer('divisbility');
+	        $table->integer('divisibility');
 	        $table->integer('initial_stock');
 	        $table->integer('fee_total');
 	        $table->integer('fee_transfer');
