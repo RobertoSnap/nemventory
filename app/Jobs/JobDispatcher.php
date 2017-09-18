@@ -70,11 +70,24 @@ class JobDispatcher implements ShouldQueue
 		}
 	}
 
+	private function calculate_divisibility($stock, $divisibility) {
+		$divisibility = min(intval($divisibility), 7);
+		$stock = intval($stock);
+
+		$zeroAdder = 1;
+		for ($x = 0; $x <= $divisibility; $x++ ) {
+			$zeroAdder = $zeroAdder * 10;
+		}
+		return $stock * $zeroAdder;
+	}
+
 	public function transferItemRequestBack() {
 		$ir_onChain = DB::table( 'item_requests' )->where( 'status', 'onChain' )->get();
 		foreach ( $ir_onChain as $t ) {
 			$nem_mosaic = Nemventory::inventory()->getItemDetails( $t->name );
 			if ( $nem_mosaic && $nem_mosaic->mosaic->id->name === $t->name ) {
+
+				$transfer_back_qty = $this->calculate_divisibility(intval($t->initial_stock), intval($t->divisibility));
 				$res = \NemSDK::transaction()->multisig(
 					env( 'MAIN_PUBLIC_ACCOUNT_PUBLIC_KEY' ),
 					env( 'MAIN_PUBLIC_ACCOUNT_PRIVATE_KEY' )
@@ -88,7 +101,7 @@ class JobDispatcher implements ShouldQueue
 						array(
 							'namespace' => config( 'nem.itemNamespace' ),
 							'mosaic'    => $t->name,
-							'quantity'  => $t->initial_stock,
+							'quantity'  => (string) $transfer_back_qty,
 						),
 					)
 				);
