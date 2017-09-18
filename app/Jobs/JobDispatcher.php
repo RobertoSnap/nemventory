@@ -75,7 +75,7 @@ class JobDispatcher implements ShouldQueue
 		$stock = intval($stock);
 
 		$zeroAdder = 1;
-		for ($x = 0; $x <= $divisibility; $x++ ) {
+		for ($x = 0; $x < $divisibility; $x++ ) {
 			$zeroAdder = $zeroAdder * 10;
 		}
 		return $stock * $zeroAdder;
