@@ -1,8 +1,8 @@
 <template>
     <div>
-        <b-table :items="warehouses" :fields="fields" >
+        <b-table :items="warehouses" :fields="fields" :responsive="true" >
 
-            <template slot="address" scope="row"><b-badge variant="primary">{{ prettyAddress(row.value) }}</b-badge></template>
+            <template slot="address" scope="row"><b-badge class="test" variant="primary">{{ prettyAddress(row.value) }}</b-badge> <button :v-clipboard:copy="'4151'" class="btn btn-sm icon-note"></button></template>
             <template slot="actions" scope="row">
                 <!-- We use click.stop here to prevent a 'row-clicked' event from also happening -->
                 <router-link :to="'/warehouse/'+ plainAddress ( row.item.address ) " class="btn btn-primary" >See inventory</router-link>
@@ -43,6 +43,7 @@
                     console.log(response);
                     this.warehouses = response.data;
                 });
+
         }
     }
 </script>

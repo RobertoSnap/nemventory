@@ -73,7 +73,7 @@ $grays: (
         900: $gray-900
 ) !default;
 
-$blue:    #007bff !default;
+$blue: #30ff50 !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #e83e8c !default;
@@ -83,6 +83,11 @@ $yellow:  #ffc107 !default;
 $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
+
+$nemBlue: #67B3E9 !default;
+$nemGreen: #00C5B4  !default;
+$nemOrange: #F7A900 !default;
+$nemRed: #d15f47 !default;
 
 $colors: (
         blue: $blue,
@@ -101,12 +106,12 @@ $colors: (
 ) !default;
 
 $theme-colors: (
-        primary: $blue,
+        primary: $nemBlue,
         secondary: $gray-600,
-        success: $green,
-        info: $cyan,
-        warning: $yellow,
-        danger: $red,
+        success: $nemGreen,
+        info: $nemOrange,
+        warning: $nemRed,
+        danger: $nemRed,
         light: $gray-100,
         dark: $gray-800
 ) !default;

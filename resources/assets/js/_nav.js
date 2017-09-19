@@ -6,6 +6,13 @@ export default {
             icon: 'icon-speedometer',
         },
         {
+            title: true,
+            name: 'Areas'
+        },
+        {
+            divider: true
+        },
+        {
             name: 'Warehouse',
             url: '/warehouse',
             icon: 'icon-organization',
@@ -73,12 +80,5 @@ export default {
                 },
             ]
         },
-        {
-            divider: true
-        },
-        {
-            title: true,
-            name: 'Account'
-        }
     ]
 }
