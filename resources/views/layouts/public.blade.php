@@ -18,7 +18,7 @@
 <body>
 <div id="public" class="site-wrapper">
 
-    <div id="particles"></div>
+
 
     <div class="site-wrapper-inner">
 
@@ -29,8 +29,8 @@
                     <h3 class="masthead-brand"><a href="/"><b>NEM</b>ventory</a></h3>
                     <nav class="nav nav-masthead">
                         @if (Auth::guest())
-                            <b-nav-item class="nav-link" href="{{ route('login') }}">Login</b-nav-item>
-                            <b-nav-item class="nav-link" href="{{ route('register') }}">Register</b-nav-item>
+                            <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
                         @else
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
@@ -56,9 +56,12 @@
 
         </div>
 
+
+
     </div>
 
 </div>
+<div id="particles"></div>
 
 
 <!-- Scripts -->

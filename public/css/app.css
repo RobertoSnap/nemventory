@@ -13958,6 +13958,14 @@ hr.transparent {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 0;
+  z-index: -5;
+}
+
+#public {
+  z-index: 3;
+}
+
+html body {
+  background-color: rgba(255, 0, 0, 0) !important;
 }
 
