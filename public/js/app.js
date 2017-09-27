@@ -45481,7 +45481,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           attrs: {
             "to": '/sales/' + row.item.id
           }
-        }, [_vm._v("Edit")]) : _vm._e(), _vm._v(" "), (row.item.status === 'created') ? _c('button', {
+        }, [_vm._v("Edit")]) : _vm._e(), _vm._v(" "), (row.item.status !== 'sent') ? _c('button', {
           staticClass: "btn btn-primary",
           on: {
             "click": function($event) {

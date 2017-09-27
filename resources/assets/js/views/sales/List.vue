@@ -11,7 +11,7 @@
             <template slot="actions" scope="row">
                 <!-- We use click.stop here to prevent a 'row-clicked' event from also happening -->
                 <router-link v-if="row.item.status === 'created'" :to="'/sales/'+ row.item.id" class="btn btn-primary" >Edit</router-link>
-                <button v-if="row.item.status === 'created'" v-on:click="sendOrder(row.item.id)" class="btn btn-primary" >Send</button>
+                <button v-if="row.item.status !== 'sent' " v-on:click="sendOrder(row.item.id)" class="btn btn-primary" >Send</button>
             </template>
 
         </b-table>

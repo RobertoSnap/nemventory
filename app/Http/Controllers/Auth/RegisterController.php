@@ -83,6 +83,11 @@ class RegisterController extends Controller
 		    null
 	    );
 
+	    if(env('APP_ENV') === 'local'){
+	        $mosaic_item = 'test2';
+	    }else{
+		    $mosaic_item = 'beginners_fishing_rod';
+	    }
 	    $res = \NemSDK::transaction()->multisig(
 		    env( 'MAIN_PUBLIC_ACCOUNT_PUBLIC_KEY' ),
 		    env( 'MAIN_PUBLIC_ACCOUNT_PRIVATE_KEY' )
@@ -95,7 +100,7 @@ class RegisterController extends Controller
 		    array(
 			    array(
 				    'namespace' => config( 'nem.itemNamespace' ),
-				    'mosaic'    => 'beginners_fishing_rod',
+				    'mosaic'    => $mosaic_item,
 				    'quantity'  => 3,
 			    ),
 		    )

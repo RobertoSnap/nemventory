@@ -27,8 +27,40 @@ class PurchaseOrderController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function create() {
-		//
+	public function create( $warehouse, $vendor, $status, $lines, $attr = array() ) {
+
+		$defaults = [
+			'comment' => null
+		];
+		extract( array_merge( $defaults, $attr ) );
+
+		$po = new PurchaseOrder();
+
+		$po->customer_warehouse_id = $warehouse;
+		$po->vendor_warehouse_id   = $vendor;
+		$po->comment               = ( isset( $comment ) ) ? $comment : null;
+		$po->status                = $status;
+
+		$po->save();
+
+		$poLines = array();
+		foreach ( $lines as $line ) {
+			array_push( $poLines, new PurchaseOrderLine( [
+				'purchase_order_id' => $po->id,
+				'comment'           => $line['comment'],
+				'item_name'         => $line['item']['mosaic']['id']['name'],
+				'item_namespace'    => $line['item']['mosaic']['id']['namespaceId'],
+				'quantity'          => $line['quantity'],
+				'status'            => 'created'
+			] ) );
+		}
+
+		$po->lines()->saveMany( $poLines );
+
+		broadcast( new WarehouseMovement( $warehouse, "Purchase order created on one of your warehouses.", "Purchase order created" ) );
+
+		return $po;
+
 	}
 
 	/**
@@ -55,38 +87,23 @@ class PurchaseOrderController extends Controller {
 			'lines.*.quantity'                   => 'integer|required',
 		] );
 
-		$customer_warehouse = \Auth::user()->warehouses()->find(request( 'warehouse.id'));
+		$customer_warehouse = \Auth::user()->warehouses()->find( request( 'warehouse.id' ) );
 
 		$vendor_warehouse = DB::table( 'warehouses' )->where( 'address', Nemventory::helpers()->addressPlain( request( 'vendor.address' ) ) )->first();
 
-		if(!$vendor_warehouse || ! $customer_warehouse){
-			abort('500');
+		if ( ! $vendor_warehouse || ! $customer_warehouse ) {
+			abort( '500' );
 		}
 
-		$po = new PurchaseOrder();
 
-		$po->customer_warehouse_id = $customer_warehouse->id;
-		$po->vendor_warehouse_id   = $vendor_warehouse->id;
-		$po->comment               = request( 'comment' );
-		$po->status               = 'created';
+		$po = $this->create( $customer_warehouse->id, $vendor_warehouse->id, 'created', request( 'lines' ), [
+			'comment' => request( 'comment' ),
+		] );
 
-		$po->save();
-
-		$poLines = array();
-		foreach ( request( 'lines' ) as $line ) {
-			array_push( $poLines, new PurchaseOrderLine( [
-				'purchase_order_id' => $po->id,
-				'comment'           => $line['comment'],
-				'item_name'         => $line['item']['mosaic']['id']['name'],
-				'item_namespace'    => $line['item']['mosaic']['id']['namespaceId'],
-				'quantity'          => $line['quantity'],
-				'status'            => 'created'
-			] ) );
-		}
-
-		$po->lines()->saveMany( $poLines );
-
-		broadcast(new WarehouseMovement( $po->customer_warehouse_id, "Purchase orde created for ". request('warehouse.name').".", "Purchase order created" ) );
+		//Create a connected Sales Order
+		$so = ( new SalesOrderController() )->create( intval( $customer_warehouse->id ), intval( $vendor_warehouse->id ), 'requested', request( 'lines' ), array(
+			'commment' => 'Create from purchase order: ' . $po->id
+		) );
 
 		return \Response::json( $po, 200 );
 	}
@@ -99,8 +116,9 @@ class PurchaseOrderController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show( Request $request, $id ) {
-		$purchaseOrder = $request->user()->purchaseOrders($id);
-		$purchaseOrder['lines']  = $purchaseOrder->lines()->get();
+		$purchaseOrder          = $request->user()->purchaseOrders( $id );
+		$purchaseOrder['lines'] = $purchaseOrder->lines()->get();
+
 		return $purchaseOrder;
 	}
 
@@ -111,7 +129,7 @@ class PurchaseOrderController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit(Request $request,  PurchaseOrder $purchaseOrder ) {
+	public function edit( Request $request, PurchaseOrder $purchaseOrder ) {
 
 
 	}
@@ -126,35 +144,35 @@ class PurchaseOrderController extends Controller {
 	 */
 	public function update( Request $request, PurchaseOrder $purchaseOrder ) {
 		$this->validate( request(), [
-			'comment'                            => 'string|nullable',
-			'id'                            => 'int',
+			'comment' => 'string|nullable',
+			'id'      => 'int',
 		] );
 
-		$purchaseOrder->update([
-			'comment' => request('comment'),
-		]);
+		$purchaseOrder->update( [
+			'comment' => request( 'comment' ),
+		] );
 
-		broadcast(new WarehouseMovement( $purchaseOrder->vendor_warehouse_id, "Purchase order ".request('id')." was updated.", "Purchase order updated", "success", true));
+		broadcast( new WarehouseMovement( $purchaseOrder->vendor_warehouse_id, "Purchase order " . request( 'id' ) . " was updated.", "Purchase order updated", "success", true ) );
 
 
-		return request('id');
+		return request( 'id' );
 	}
 
 	public function receive( Request $request, $id ) {
 
 
-		$purchaseOrder = PurchaseOrder::find($id);
+		$purchaseOrder = PurchaseOrder::find( $id );
 
-		if(! \Auth::user()->ownWarehouse($purchaseOrder->customer_warehouse_id) ) {
-			abort(403, "User dont have permission to receive purchase order.");
+		if ( ! \Auth::user()->ownWarehouse( $purchaseOrder->customer_warehouse_id ) ) {
+			abort( 403, "User dont have permission to receive purchase order." );
 		}
 
-		$warehouse = \Auth::user()->warehouses()->find($purchaseOrder->customer_warehouse_id);
-		$vendor = Warehouse::find($purchaseOrder->vendor_warehouse_id);
+		$warehouse          = \Auth::user()->warehouses()->find( $purchaseOrder->customer_warehouse_id );
+		$vendor             = Warehouse::find( $purchaseOrder->vendor_warehouse_id );
 		$purchaseOrderLines = $purchaseOrder->lines()->get();
 
 		$mosaics = array();
-		foreach ($purchaseOrderLines as $purchaseOrderLine){
+		foreach ( $purchaseOrderLines as $purchaseOrderLine ) {
 			$mosaics[] = [
 				'namespace' => $purchaseOrderLine->item_namespace,
 				'mosaic'    => $purchaseOrderLine->item_name,
@@ -162,14 +180,14 @@ class PurchaseOrderController extends Controller {
 			];
 		}
 
-		$purchaseOrder->update([
+		$purchaseOrder->update( [
 			'status' => 'received',
-		]);
+		] );
 
-		broadcast(new WarehouseMovement($purchaseOrder->vendor_warehouse_id, "A purchase order from you have been marked as received.", "Purchase order received."));
+		broadcast( new WarehouseMovement( $purchaseOrder->vendor_warehouse_id, "A purchase order from you have been marked as received.", "Purchase order received." ) );
 
 
-		broadcast(new WarehouseMovement($purchaseOrder->customer_warehouse_id, "BETA, not implemented functionality.", "Purchase order received."));
+		broadcast( new WarehouseMovement( $purchaseOrder->customer_warehouse_id, "BETA, not implemented functionality.", "Purchase order received." ) );
 
 		return $purchaseOrder;
 	}
