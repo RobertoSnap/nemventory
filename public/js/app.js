@@ -31582,7 +31582,7 @@ r(t=e)}else o()}}function l(t,e,n,r){var o=n?"":r.css;if(t.styleSheet)t.styleShe
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(17);
-module.exports = __webpack_require__(164);
+module.exports = __webpack_require__(163);
 
 
 /***/ }),
@@ -31603,10 +31603,8 @@ __webpack_require__(6);
 
 
 
-var VueClipboard = __webpack_require__(163);
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_bootstrap_vue__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(VueClipboard);
 
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
@@ -31897,6 +31895,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
             name: 'Create purchase order',
             component: __WEBPACK_IMPORTED_MODULE_11__views_purchase_Create_vue___default.a
         }, {
+            path: '/purchase/create/:initiateWithItem',
+            name: 'Create purchase order from item',
+            component: __WEBPACK_IMPORTED_MODULE_11__views_purchase_Create_vue___default.a,
+            props: function props(route) {
+                return { initiateWithItem: route.params.initiateWithItem };
+            }
+        }, {
             path: '/purchase/:id',
             name: 'Purchase edit',
             component: __WEBPACK_IMPORTED_MODULE_12__views_purchase_Edit_vue___default.a,
@@ -31914,6 +31919,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
             path: '/sales/create',
             name: 'Create sales order',
             component: __WEBPACK_IMPORTED_MODULE_14__views_sales_Create_vue___default.a
+        }, {
+            path: '/sales/create/:initiateWithItem',
+            name: 'Create sales order from item',
+            component: __WEBPACK_IMPORTED_MODULE_14__views_sales_Create_vue___default.a,
+            props: function props(route) {
+                return { initiateWithItem: route.params.initiateWithItem };
+            }
         }, {
             path: '/sales/:id',
             name: 'Sales edt',
@@ -41693,8 +41705,6 @@ exports.push([module.i, "", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_clipboard__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_clipboard__);
 //
 //
 //
@@ -41709,7 +41719,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -41758,17 +41767,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     scopedSlots: _vm._u([{
       key: "address",
       fn: function(row) {
-        return [_c('b-badge', {
+        return [_c('small', {
+          staticClass: "text-muted"
+        }, [_c('span', {
           staticClass: "test",
           attrs: {
             "variant": "primary"
           }
-        }, [_vm._v(_vm._s(_vm.prettyAddress(row.value)))]), _vm._v(" "), _c('button', {
-          staticClass: "btn btn-sm icon-note",
-          attrs: {
-            "v-clipboard:copy": '4151'
-          }
-        })]
+        }, [_vm._v(_vm._s(_vm.prettyAddress(row.value)))])])]
       }
     }, {
       key: "actions",
@@ -42736,6 +42742,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
@@ -42819,7 +42826,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           attrs: {
             "to": '/item/' + row.item.namespaceId + '.' + row.item.name
           }
-        }, [_vm._v("Details")])]
+        }, [_vm._v("Details")]), _vm._v(" "), _c('router-link', {
+          staticClass: "btn btn-warning",
+          attrs: {
+            "to": '/sales/create/' + row.item.name
+          }
+        }, [_vm._v("Sell")])]
       }
     }])
   })], 1)
@@ -42911,7 +42923,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -42922,6 +42934,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -43056,7 +43069,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           attrs: {
             "to": '/item/' + row.item.mosaic.id.namespaceId + '.' + row.item.mosaic.id.name
           }
-        }, [_vm._v("Details")])]
+        }, [_vm._v("Details")]), _vm._v(" "), _c('router-link', {
+          staticClass: "btn btn-warning",
+          attrs: {
+            "to": '/purchase/create/' + row.item.mosaic.id.name
+          }
+        }, [_vm._v("Buy")])]
       }
     }])
   })], 1)
@@ -43862,23 +43880,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     scopedSlots: _vm._u([{
       key: "vendor",
       fn: function(row) {
-        return [_c('span', [_vm._v(_vm._s(_vm.warehouses[row.item.vendor_warehouse_id].name))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('b-badge', {
-          attrs: {
-            "variant": "primary"
-          }
-        }, [_c('small', {
-          staticClass: "hidden-xs-up"
-        }, [_vm._v(_vm._s(_vm.prettyAddress(_vm.warehouses[row.item.vendor_warehouse_id].address)))])])]
+        return [_c('span', [_vm._v(_vm._s(_vm.warehouses[row.item.vendor_warehouse_id].name))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('small', {
+          staticClass: "text-muted"
+        }, [_vm._v(_vm._s(_vm.prettyAddress(_vm.warehouses[row.item.vendor_warehouse_id].address)))])]
       }
     }, {
       key: "customer",
       fn: function(row) {
-        return [_c('span', [_vm._v(_vm._s(_vm.warehouses[row.item.customer_warehouse_id].name))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('b-badge', {
-          staticClass: "hidden-md-down",
-          attrs: {
-            "variant": "primary"
-          }
-        }, [_c('small', [_vm._v(_vm._s(_vm.prettyAddress(_vm.warehouses[row.item.customer_warehouse_id].address)))])])]
+        return [_c('span', [_vm._v(_vm._s(_vm.warehouses[row.item.customer_warehouse_id].name))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('small', {
+          staticClass: "text-muted"
+        }, [_vm._v(_vm._s(_vm.prettyAddress(_vm.warehouses[row.item.customer_warehouse_id].address)))])]
       }
     }, {
       key: "status",
@@ -44158,6 +44169,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        initiateWithItem: {
+            default: undefined
+        }
+    },
     components: { vSelect: __WEBPACK_IMPORTED_MODULE_2_vue_select___default.a, VendorCreate: __WEBPACK_IMPORTED_MODULE_1__components_VendorCreate_vue___default.a },
     data: function data() {
         return {
@@ -44249,7 +44265,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
             axios.get('/api/item').then(function (response) {
                 _this2.items = response.data;
+                _this2.initiateItems();
             });
+        },
+        initiateItems: function initiateItems() {
+            if (this.initiateWithItem) {
+                for (var key in this.items) {
+                    if (this.items[key].mosaic.id.name === this.initiateWithItem) {
+                        this.form.lines[0].item = this.items[key];
+                    }
+                }
+            }
         }
     },
     mounted: function mounted() {
@@ -45436,20 +45462,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     scopedSlots: _vm._u([{
       key: "customer",
       fn: function(row) {
-        return [_c('span', [_vm._v(_vm._s(_vm.warehouses[row.item.customer_warehouse_id].name))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('b-badge', {
-          attrs: {
-            "variant": "primary"
-          }
-        }, [_c('small', [_vm._v(_vm._s(_vm.prettyAddress(_vm.warehouses[row.item.customer_warehouse_id].address)))])])]
+        return [_c('span', [_vm._v(_vm._s(_vm.warehouses[row.item.customer_warehouse_id].name))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('small', {
+          staticClass: "text-muted"
+        }, [_vm._v(_vm._s(_vm.prettyAddress(_vm.warehouses[row.item.customer_warehouse_id].address)))])]
       }
     }, {
       key: "warehouse",
       fn: function(row) {
-        return [_c('span', [_vm._v(_vm._s(_vm.warehouses[row.item.vendor_warehouse_id].name))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('b-badge', {
-          attrs: {
-            "variant": "primary"
-          }
-        }, [_c('small', [_vm._v(_vm._s(_vm.prettyAddress(_vm.warehouses[row.item.vendor_warehouse_id].address)))])])]
+        return [_c('span', [_vm._v(_vm._s(_vm.warehouses[row.item.vendor_warehouse_id].name))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('small', {
+          staticClass: "text-muted"
+        }, [_vm._v(_vm._s(_vm.prettyAddress(_vm.warehouses[row.item.vendor_warehouse_id].address)))])]
       }
     }, {
       key: "actions",
@@ -45675,6 +45697,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        initiateWithItem: {
+            default: undefined
+        }
+    },
     components: { vSelect: __WEBPACK_IMPORTED_MODULE_2_vue_select___default.a, CustomerCreate: __WEBPACK_IMPORTED_MODULE_1__components_CustomerCreate_vue___default.a },
     data: function data() {
         return {
@@ -45766,7 +45793,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
             axios.get('/api/item').then(function (response) {
                 _this2.items = response.data;
+                _this2.initiateItems();
             });
+        },
+        initiateItems: function initiateItems() {
+            if (this.initiateWithItem) {
+                for (var key in this.items) {
+                    if (this.items[key].mosaic.id.name === this.initiateWithItem) {
+                        this.form.lines[0].item = this.items[key];
+                    }
+                }
+            }
         }
     },
     mounted: function mounted() {
@@ -46778,152 +46815,6 @@ if (false) {
 
 /***/ }),
 /* 163 */
-/***/ (function(module, exports, __webpack_require__) {
-
-;(function() {
-  var vueClipboard = {}
-
-  vueClipboard.install = function(Vue) {
-    Vue.directive('clipboard', {
-      params: ['success', 'error'],
-      acceptStatement: true,
-      bind: function() {
-        //bind callback
-
-        this.arg = this.arg === 'cut' ? 'cut' : 'copy'
-        Vue.util.on(this.el, 'click', this.handler.bind(this))
-      },
-
-      update: function(data) {
-        this.text = data
-      },
-
-      unbind: function() {
-        Vue.util.off(this.el, 'click', this.handler)
-        this.removeFake()
-      },
-
-      handler: function() {
-        this.selectFake(this.text)
-        if (this.arg === 'cut') {
-          this.vm[this.expression] = ''
-        }
-      },
-
-      /**
-       * Creates a fake textarea element, sets its value from `text` property,
-       * and makes a selection on it.
-       */
-
-      selectFake: function(text) {
-        var isRTL = document.documentElement.getAttribute('dir') == 'rtl'
-
-        this.removeFake()
-
-        this.fakeHandler = document.body.addEventListener('click', this.removeFake.bind(this))
-
-        this.fakeElem = document.createElement('textarea')
-        // Prevent zooming on iOS
-        this.fakeElem.style.fontSize = '12pt'
-        // Reset box model
-        this.fakeElem.style.border = '0'
-        this.fakeElem.style.padding = '0'
-        this.fakeElem.style.margin = '0'
-        // Move element out of screen horizontally
-        this.fakeElem.style.position = 'fixed'
-        this.fakeElem.style[isRTL ? 'right' : 'left'] = '-9999px'
-        // Move element to the same position vertically
-        this.fakeElem.style.top = (window.pageYOffset || document.documentElement.scrollTop) + 'px'
-        this.fakeElem.setAttribute('readonly', '')
-        this.fakeElem.value = text
-
-        document.body.appendChild(this.fakeElem)
-
-        this.selectedText = select(this.fakeElem)
-
-        this.copyText()
-      },
-
-      /**
-       * Only removes the fake element after another click event, that way
-       * a user can hit `Ctrl+C` to copy because selection still exists.
-       */
-      removeFake: function() {
-        if (this.fakeHandler) {
-          document.body.removeEventListener('click')
-          this.fakeHandler = null
-        }
-
-        if (this.fakeElem) {
-          document.body.removeChild(this.fakeElem)
-          this.fakeElem = null
-        }
-      },
-
-      /**
-       * Executes the copy operation based on the current selection.
-       */
-      copyText: function() {
-        var succeeded
-        try {
-          succeeded = document.execCommand('copy')
-        } catch (err) {
-          succeeded = false
-        }
-        this.handleResult(succeeded)
-      },
-      handleResult: function(succeeded) {
-        if (succeeded) {
-          this.params.success && this.params.success()
-        } else {
-          this.params.error && this.params.error()
-        }
-      }
-    })
-  }
-
-  function select(element) {
-    var selectedText
-
-    if (element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA') {
-      element.focus()
-      element.setSelectionRange(0, element.value.length)
-
-      selectedText = element.value
-    } else {
-      if (element.hasAttribute('contenteditable')) {
-        element.focus()
-      }
-
-      var selection = window.getSelection()
-      var range = document.createRange()
-
-      range.selectNodeContents(element)
-      selection.removeAllRanges()
-      selection.addRange(range)
-
-      selectedText = selection.toString()
-    }
-
-    return selectedText
-  }
-
-  if (true) {
-    module.exports = vueClipboard
-  } else if (typeof define == "function" && define.amd) {
-    define([], function() {
-      return vueClipboard
-    })
-  } else if (window.Vue) {
-    window.vueClipboard = vueClipboard
-    Vue.use(vueClipboard)
-  }
-
-})()
-
-
-/***/ }),
-/* 164 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

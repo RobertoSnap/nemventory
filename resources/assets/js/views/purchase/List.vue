@@ -3,10 +3,10 @@
         <b-table :items="items" :fields="fields" v-if="warehouses">
 
             <template slot="vendor" scope="row" >
-                <span>{{ warehouses[row.item.vendor_warehouse_id].name }}</span> <br> <b-badge variant="primary"><small class="hidden-xs-up">{{ prettyAddress( warehouses[row.item.vendor_warehouse_id].address ) }}</small></b-badge>
+                <span>{{ warehouses[row.item.vendor_warehouse_id].name }}</span> <br> <small class="text-muted">{{ prettyAddress( warehouses[row.item.vendor_warehouse_id].address ) }}</small></b-badge>
             </template>
             <template slot="customer" scope="row" >
-               <span>{{ warehouses[row.item.customer_warehouse_id].name }}</span> <br> <b-badge variant="primary" class="hidden-md-down"><small>{{ prettyAddress( warehouses[row.item.customer_warehouse_id].address ) }}</small></b-badge>
+               <span>{{ warehouses[row.item.customer_warehouse_id].name }}</span> <br> <small class="text-muted">{{ prettyAddress( warehouses[row.item.customer_warehouse_id].address ) }}</small>
             </template>
             <template slot="status" scope="row">
 

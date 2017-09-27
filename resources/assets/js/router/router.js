@@ -99,6 +99,12 @@ export default new Router({
                     component: PurchaseCreate,
                 },
                 {
+                    path: '/purchase/create/:initiateWithItem',
+                    name: 'Create purchase order from item',
+                    component: PurchaseCreate,
+                    props: (route) => ({ initiateWithItem: route.params.initiateWithItem  })
+                },
+                {
                     path: '/purchase/:id',
                     name: 'Purchase edit',
                     component: PurchaseEdit,
@@ -116,6 +122,12 @@ export default new Router({
                     path: '/sales/create',
                     name: 'Create sales order',
                     component: SalesCreate,
+                },
+                {
+                    path: '/sales/create/:initiateWithItem',
+                    name: 'Create sales order from item',
+                    component: SalesCreate,
+                    props: (route) => ({ initiateWithItem: route.params.initiateWithItem  })
                 },
                 {
                     path: '/sales/:id',

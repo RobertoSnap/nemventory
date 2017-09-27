@@ -28,6 +28,7 @@
             <template slot="actions" scope="row">
                 <!-- We use click.stop here to prevent a 'row-clicked' event from also happening -->
                 <router-link :to="'/item/'+  row.item.mosaic.id.namespaceId + '.' + row.item.mosaic.id.name" class="btn btn-primary" >Details</router-link>
+                <router-link :to="'/purchase/create/'+ row.item.mosaic.id.name" class="btn btn-warning" >Buy</router-link>
             </template>
 
         </b-table>

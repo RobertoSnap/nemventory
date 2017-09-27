@@ -141,6 +141,11 @@
     import CustomerCreate from '../../components/CustomerCreate.vue';
     import vSelect from "vue-select"
     export default {
+        props: {
+            initiateWithItem:{
+                default: undefined,
+            },
+        },
         components: {vSelect, CustomerCreate},
         data: function () {
             return {
@@ -235,7 +240,18 @@
                 axios.get('/api/item')
                     .then(response => {
                         this.items = response.data;
+                        this.initiateItems();
                     });
+            },
+            initiateItems() {
+                if(this.initiateWithItem){
+                    for(let key in this.items){
+                        if(this.items[key].mosaic.id.name === this.initiateWithItem){
+                            this.form.lines[0].item = this.items[key];
+                        }
+                    }
+
+                }
             }
         },
         mounted: function () {
