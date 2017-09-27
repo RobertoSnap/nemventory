@@ -43875,7 +43875,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', [(_vm.warehouses) ? _c('b-table', {
     attrs: {
       "items": _vm.items,
-      "fields": _vm.fields
+      "fields": _vm.fields,
+      "sort-by": "id",
+      "sort-desc": false
     },
     scopedSlots: _vm._u([{
       key: "vendor",
@@ -45457,7 +45459,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', [(_vm.warehouses) ? _c('b-table', {
     attrs: {
       "items": _vm.items,
-      "fields": _vm.fields
+      "fields": _vm.fields,
+      "sort-by": "id",
+      "sort-desc": false
     },
     scopedSlots: _vm._u([{
       key: "customer",

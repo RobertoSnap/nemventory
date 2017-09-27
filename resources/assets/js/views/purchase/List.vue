@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-table :items="items" :fields="fields" v-if="warehouses">
+        <b-table :items="items" :fields="fields" v-if="warehouses" sort-by="id" :sort-desc="false">
 
             <template slot="vendor" scope="row" >
                 <span>{{ warehouses[row.item.vendor_warehouse_id].name }}</span> <br> <small class="text-muted">{{ prettyAddress( warehouses[row.item.vendor_warehouse_id].address ) }}</small></b-badge>
