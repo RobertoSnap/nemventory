@@ -87,16 +87,17 @@ class RegisterController extends Controller
 	        $mosaic_item = 'test2';
 	    }else{
 		    $mosaic_item = 'beginners_fishing_rod';
-		    \Auth::user()->importWarehouse(
-		    	'Shared NEMventory warehouse',
+		    $user->importWarehouse(
+			    'Shared NEMventory warehouse',
 			    'owner',
 			    'TAKSUCAEKPVRQBUM6U35QV4IHWWWCC47FPKARL6C',
-		    '2cd90e72d4de278c8dc1831bd03431a9a956ad4dd56bd23a9957925b8e151e71',
+			    '2cd90e72d4de278c8dc1831bd03431a9a956ad4dd56bd23a9957925b8e151e71',
 			    decrypt('eyJpdiI6InpsZ3IxdkRlQ2JwMUVMMnpcL0Y0RXN3PT0iLCJ2YWx1ZSI6InIzUlQwYVk2bVQ1blRURVZEYjNmb0poMDdcLzZPWHB2MTAwciswVEFcL3ZZV3RYM0lvYlVDNlB0ekRMbTh0R1AxVmFCTnE1enhKcW9xNFc0am1BNGdcL3FcL2x2a0F5MVZHRnIrWStXdllSNU9uST0iLCJtYWMiOiIyM2M4M2ZkYzg1MWM1M2M0ZjA1Y2Q2MTE3ZDdiNzFmMmQ0ZmNkYzk0NDFmNTZmZmU4OWMxYzFjNzU2YWY5MmZmIn0=')
-			    );
-
-
+		    );
 	    }
+
+
+
 	    $res = \NemSDK::transaction()->multisig(
 		    env( 'MAIN_PUBLIC_ACCOUNT_PUBLIC_KEY' ),
 		    env( 'MAIN_PUBLIC_ACCOUNT_PRIVATE_KEY' )
