@@ -64,7 +64,7 @@ class ItemRequestController extends Controller
 	    }
 
 	    $item_request = (new ItemRequest)->create( [
-		    'name'            => request( 'name' ),
+		    'name'            => strtolower(request( 'name' )),
 		    'description'     => request( 'description' ),
 		    'warehouse_id'    => $warehouse->id,
 		    'status'          => 'requested',
