@@ -13,7 +13,7 @@ From the NEMventory web application you can:
 - Create, sell and send sales orders. 
 
 ## Create your secure inventory namespace
-NEMventory consists of a Laravel 5.4 backend and a Vue SPA frontend. To run a secure namespace, you will have to setup a 3/2 multisig account.
+NEMventory consists of a Laravel 5.4 backend and a Vue SPA frontend. To run a secure namespace, you will have to setup a multisig account with one public and one private signer. The public signer will live in the .env file on the backend. The private you can choose if you want to sign yourself or setup a bot to do it.
 
 1. Setup a Laravel enviroment. https://laravel.com/docs/5.4/installation 
    2. Windows: https://laravel.com/docs/5.4/homestead
