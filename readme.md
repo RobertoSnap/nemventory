@@ -1,19 +1,19 @@
 # NEMventory: Trade and inventory system backed on NEM blockchain.
 
-NEMventory is a secured namespace on NEM blockchain. With NEMventory web application you can request creation of items for a XEM fee. Requested items are distributed back to address of fee payer. 
+NEMventory is a secured namespace on NEM blockchain. With NEMventory web application you can request the creation of items for an XEM fee. Requested items are distributed back to address of fee-payer. 
 
-NEMventory handles addresses as warehouses. You can create or import addresses to use as warehouses. NEMventory web application supports simple and multisig accounts. The importer will detech type of account and guide you thorugh the import process. 
+NEMventory handles addresses as warehouses. You can create or import addresses to use as warehouses. NEMventory web application supports simple and multisig accounts. The importer will detect the type of account and guide you through the import process. 
 
-On testnet, each newly created account will have a warehouse crated for them. The NEMventory bot will also issue some test xem and starting items to all new accounts (as longs as stocks holds up).
+On testnet, each newly created account will have a warehouse crated for them. The NEMventory bot will also issue some test xem and starting items to all new accounts (as longs as stocks hold up).
 
 From the NEMventory web application you can:
-- Request and create nemventory items.
-- See inventory information accross warehouses
+- Request and create inventory items.
+- See inventory information across warehouses
 - Create, buy and receive purchase orders.
 - Create, sell and send sales orders. 
 
-## Create your own secure inventory namespace
-NEMventory consist of a Laravel 5.4 backend and a Vue SPA frontend. To run a secure namespace you will have to setup a 3/2 multisig account.
+## Create your secure inventory namespace
+NEMventory consists of a Laravel 5.4 backend and a Vue SPA frontend. To run a secure namespace, you will have to setup a 3/2 multisig account.
 
 1. Setup a Laravel enviroment. https://laravel.com/docs/5.4/installation 
    2. Windows: https://laravel.com/docs/5.4/homestead
@@ -31,9 +31,8 @@ NEMventory consist of a Laravel 5.4 backend and a Vue SPA frontend. To run a sec
    NEM_NAMESPACE=nemventory
    NEM_ITEM_NAMESPACE=nemventory.items
    NEM_ADDRESS=TD4SAQFGF3DP3IJAXJA2GYGQ3HZVD3AS3UIZ44EA
-  
 ```
 
-You can sign the transactions with Nanowallet or you setup a bot too do it for you. For NEMventory im useing this one [Greg Evias Node JS bot](https://github.com/evias/nem-nodejs-bot).
+You can sign the transactions with Nanowallet or you setup a bot to do it for you. For NEMventory I'm using this one [Greg Evias Node JS bot](https://github.com/evias/nem-nodejs-bot).
 
-You must setup a NEM node on the server [Ubuntu NEM node turtorial](https://blog.nem.io/ubuntu-installation-guide-standalone/)
+You must setup an NEM node on the server [Ubuntu NEM node turtorial](https://blog.nem.io/ubuntu-installation-guide-standalone/)
