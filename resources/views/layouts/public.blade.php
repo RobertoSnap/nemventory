@@ -50,7 +50,7 @@
 
             <div class="mastfoot">
                 <div class="inner">
-                    <p>Powered by <a href="https://nem.io"><b>NEM</b> blockchain</a>, MIT license <a href="https://github.com"> Github</a>.</p>
+                    <p>Powered by <a href="https://nem.io"><b>NEM</b> blockchain</a>, MIT license <a href="https://github.com/RobertoSnap/nemventory"> Github</a>.</p>
                 </div>
             </div>
 

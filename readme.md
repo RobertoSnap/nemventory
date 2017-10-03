@@ -19,6 +19,9 @@ NEMventory consists of a Laravel 5.4 backend and a Vue SPA frontend. To run a se
    2. Windows: https://laravel.com/docs/5.4/homestead
    2. Mac: https://laravel.com/docs/5.4/valet
 1. Clone this repo into a public folder ```git clone https://github.com/RobertoSnap/nemventory.git Nemventory```
+1. Run ```composer install```
+1. Setup a DB for your Laravel installation.
+1. Run ```php artisan passport:install```. This will generate the keys for API based autentication.
 1. Run ```npm install```
 1. Run ```npm run watch```
 1. Then in your .env file, configure the following:
