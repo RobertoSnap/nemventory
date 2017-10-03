@@ -1,3 +1,4 @@
+![NEMventory](http://nemventory.nem.today/images/logo_color.png)
 # NEMventory: Trade and inventory system backed on NEM blockchain.
 
 NEMventory is a secured namespace on NEM blockchain. With NEMventory web application you can request the creation of items for an XEM fee. Requested items are distributed back to address of fee-payer. 
