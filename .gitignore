@@ -11,3 +11,4 @@ npm-debug.log
 yarn-error.log
 .env
 /database/seeds/DatabaseSeeder.php
+article.md
